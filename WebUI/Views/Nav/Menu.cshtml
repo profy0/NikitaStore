@@ -1,7 +1,20 @@
 ﻿@model IEnumerable<string>
 
+<style>
+
+    .btnForNav {
+        background: white;
+    }
+
+    .btnForNavSelected {
+        background: grey;
+        color: white;
+    }
+
+</style>
+
 @Html.ActionLink("Домой", "List", "Product", null,
-    new { @class = "btn btn-block btn-default btn-lg" })
+    new { @class = "btn btn-block btn-default btn-lg btnForNav" })
 
 @foreach (var link in Model)
 {
@@ -13,7 +26,7 @@
         page = 1
     }, new
     {
-        @class = "btn btn-block btn-default btn-lg"
-            + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
+        @class = "btn btn-block btn-default btn-lg btnForNav"
+            + (link == ViewBag.SelectedCategory ? " btnForNavSelected" : "")
     })
 }

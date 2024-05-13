@@ -5,7 +5,7 @@
 }
 
 <h2>Оформить заказ сейчас</h2>
-<p>Пожалуйста введите ваши контактные данные и мы сразу отправим товар!</p>
+<p>Пожалуйста введите ваши контактные данные.</p>
 
 
 @using (Html.BeginForm())
@@ -20,7 +20,7 @@
     <h3>Адрес доставки</h3>
     foreach (var property in ViewData.ModelMetadata.Properties)
     {
-        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        if (property.PropertyName != "Name" && property.PropertyName != "FastDelivery")
         {
             <div class="form-group">
                 <label>@(property.DisplayName ?? property.PropertyName)</label>
@@ -31,8 +31,8 @@
     <h3>Опции</h3>
     <div class="checkbox">
         <label>
-            @Html.EditorFor(x => x.GiftWrap)
-            Использовать подарочную упаковку?
+            @Html.EditorFor(x => x.FastDelivery)
+            Срочная доставка (+10р)?
         </label>
     </div>
 
