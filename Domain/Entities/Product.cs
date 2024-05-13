@@ -26,5 +26,7 @@ namespace Domain.Entities
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage="Пожалуйста, введите корректную цену товара")]
         public decimal Price { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType {  get; set; }
     }
 }
