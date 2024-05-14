@@ -81,16 +81,5 @@ namespace WebUI.Controllers
                 return View(shippingDetails);
             }
         }
-
-      /*  public Cart GetCart()
-        {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }*/
     }
 }

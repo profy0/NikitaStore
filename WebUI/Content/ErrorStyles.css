@@ -20,3 +20,8 @@
 .validation-summary-valid {
     display: none;
 }
+
+.btn-selected {
+    background-color: #808080; /* Цвет фона */
+    color: white; /* Цвет текста */
+}

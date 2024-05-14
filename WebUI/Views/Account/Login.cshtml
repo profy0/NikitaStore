@@ -10,7 +10,6 @@
         <h3>Вход в систему</h3>
     </div>
     <div class="panel-body">
-        <p class="lead">Пожалуйста, войдите в систему, чтобы получить доступ к админ. панели:</p>
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary()
@@ -22,7 +21,7 @@
                 <label>Пароль:</label>
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             </div>
-            <input type="submit" value="Войти" class="btn btn-primary" />
+            <input type="submit" value="Войти" class="btn btn-success" />
         }
     </div>
 </div>

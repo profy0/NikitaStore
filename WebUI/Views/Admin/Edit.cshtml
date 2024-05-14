@@ -7,7 +7,7 @@
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Редактирование игры «@Model.Name»</h3>
+        <h3>Редактирование товара «@Model.Name»</h3>
     </div>
 
     @using (Html.BeginForm("Edit", "Admin",
@@ -22,7 +22,6 @@
                     case "Id":
                     case "ImageData":
                     case "ImageMimeType":
-                        // Ничего не делать
                         break;
                     default:
                         <div class="form-group">
@@ -68,7 +67,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <input type="submit" value="Сохранить" class="btn btn-primary" />
+            <input type="submit" value="Сохранить" class="btn btn-success" />
             @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
             {
                 @class = "btn btn-default"

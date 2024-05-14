@@ -35,45 +35,6 @@ namespace Domain.Concrete
 
         public void ProcessOrder(Cart cart, ShippingDetails shippingInfo)
         {
-
-          /*  try
-            {
-                var smtpClient = new SmtpClient("smtp.gmail.com")
-                {
-                    Port = 587,
-                    Credentials = new NetworkCredential("nikitayurchik123@gmail.com", "ixgrwiinnsfrurho"),
-                    EnableSsl = true,
-                };
-
-                var mailMessage = new MailMessage
-                {
-                    From = new MailAddress("nikitayurchik123@gmail.com"),
-                    Subject = "Тестовое сообщение",
-                    Body = "Это тестовое сообщение",
-                    IsBodyHtml = true,
-                };
-
-                mailMessage.To.Add("nikita-yurchik@mail.ru");
-
-                smtpClient.Send(mailMessage);
-
-                Console.WriteLine("Email успешно отправлено!");
-
-                System.Diagnostics.Debug.WriteLine("EVERYTHING IS OKAY <3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3");
-
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("EVERYTHING IS BAD <3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3<3");
-                System.Diagnostics.Debug.WriteLine("An error occurred while sending the email: " + ex.Message);
-                System.Diagnostics.Debug.WriteLine("Stack Trace: " + ex.StackTrace);
-                if (ex.InnerException != null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Inner Exception: " + ex.InnerException.Message);
-                    System.Diagnostics.Debug.WriteLine("Inner Exception Stack Trace: " + ex.InnerException.StackTrace);
-                }
-            }*/
-
              using (var smtpClient = new SmtpClient())
              {
                  smtpClient.EnableSsl = emailSettings.UseSsl;
@@ -85,8 +46,7 @@ namespace Domain.Concrete
 
                  if (emailSettings.WriteAsFile)
                  {
-                     smtpClient.DeliveryMethod
-                         = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
                      smtpClient.PickupDirectoryLocation = emailSettings.FileLocation;
                      smtpClient.EnableSsl = false;
                  }
@@ -111,14 +71,13 @@ namespace Domain.Concrete
                      .AppendLine(shippingInfo.City)
                      .AppendLine(shippingInfo.Country)
                      .AppendLine("---")
-                     .AppendFormat("Срочная доставка: {0}",
-                         shippingInfo.FastDelivery ? "Да" : "Нет");
+                     .AppendFormat("Срочная доставка: {0}", shippingInfo.FastDelivery ? "Да" : "Нет");
 
                  MailMessage mailMessage = new MailMessage(
-                                        emailSettings.MailFromAddress,	// От кого
-                                        emailSettings.MailToAddress,		// Кому
-                                        "Новый заказ отправлен!",		// Тема
-                                        body.ToString()); 				// Тело письма
+                                        emailSettings.MailFromAddress,
+                                        emailSettings.MailToAddress,	
+                                        "Новый заказ!",		
+                                        body.ToString()); 			
 
                  if (emailSettings.WriteAsFile)
                  {
@@ -134,7 +93,6 @@ namespace Domain.Concrete
                      Console.WriteLine("An error occurred while sending the email: " + ex.Message);
                  }
 
-               //  smtpClient.Send(mailMessage);
              }
         }
     }
